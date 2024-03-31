@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="th">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Crows</title>
+
+        <meta
+            name="google-site-verification"
+            content="YN7MzHjrhf7qHUDF8UKSQqK44hysrR21BcEjkVDo8yk"
+        />
+
+        <meta
+            name="description"
+            content="เว็ปคำนวณเหรียญ CROW เทียบราคาขายในเกมส์"
+        />
+        <meta name="keywords" content="Night Crow, crow token, exchange" />
+
+        <script defer src="script.js"></script>
+        <link rel="stylesheet" href="styles.css" />
+
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="favicon/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="favicon/site.webmanifest" />
+    </head>
+    <body>
+        <header></header>
+        <main>
+            <section>
+                <div class="item">
+                    <p>item</p>
+                    <p>crow</p>
+                    <p>diamond</p>
+                    <p>amount</p>
+                    <p>profit</p>
+                    <button class="setting" title="ลบ 5% แล้ว">
+                        <svg height="24" viewBox="0 -960 960 960" width="24">
+                            <path
+                                fill="currentColor"
+                                d="M480-120q-33 0-56.5-23.5T400-200q0-33 23.5-56.5T480-280q33 0 56.5 23.5T560-200q0 33-23.5 56.5T480-120Zm-80-240v-480h160v480H400Z"
+                            />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="item" id="morion">
+                    <div class="logo">
+                        <img src="images/MORION.webp" alt="morion images" />
+                        <p>morion</p>
+                    </div>
+                    <input type="number" step="0.01" data-crow="morion" />
+                    <input type="number" step="1" data-diamond="morion" />
+                    <input type="number" step="1" data-total="morion" />
+                    <input readonly type="text" data-result="morion" />
+                    <button class="reset" title="รีเซ็ต" data-button="morion">
+                        <svg height="24" viewBox="0 -960 960 960" width="24">
+                            <path
+                                fill="currentColor"
+                                d="M480-80q-75 0-140.5-28.5t-114-77q-48.5-48.5-77-114T120-440h80q0 117 81.5 198.5T480-160q117 0 198.5-81.5T760-440q0-117-81.5-198.5T480-720h-6l62 62-56 58-160-160 160-160 56 58-62 62h6q75 0 140.5 28.5t114 77q48.5 48.5 77 114T840-440q0 75-28.5 140.5t-77 114q-48.5 48.5-114 77T480-80Z"
+                            />
+                        </svg>
+                    </button>
+                </div>
+                <div class="item" id="gear">
+                    <div class="logo">
+                        <img src="images/GEAR.webp" alt="gear images" />
+                        <p>gear</p>
+                    </div>
+                    <input type="number" step="0.01" data-crow="gear" />
+                    <input type="number" step="1" data-diamond="gear" />
+                    <input type="number" step="1" data-total="gear" />
+                    <input readonly type="text" data-result="gear" />
+                    <button class="reset" title="รีเซ็ต" data-button="gear">
+                        <svg height="24" viewBox="0 -960 960 960" width="24">
+                            <path
+                                fill="currentColor"
+                                d="M480-80q-75 0-140.5-28.5t-114-77q-48.5-48.5-77-114T120-440h80q0 117 81.5 198.5T480-160q117 0 198.5-81.5T760-440q0-117-81.5-198.5T480-720h-6l62 62-56 58-160-160 160-160 56 58-62 62h6q75 0 140.5 28.5t114 77q48.5 48.5 77 114T840-440q0 75-28.5 140.5t-77 114q-48.5 48.5-114 77T480-80Z"
+                            />
+                        </svg>
+                    </button>
+                </div>
+                <div class="item" id="promote">
+                    <div class="logo">
+                        <img src="images/PROMOTE.webp" alt="promote images" />
+                        <p>promote</p>
+                    </div>
+                    <input type="number" step="0.01" data-crow="promote" />
+                    <input type="number" step="1" data-diamond="promote" />
+                    <input type="number" step="1" data-total="promote" />
+                    <input readonly type="text" data-result="promote" />
+                    <button class="reset" title="รีเซ็ต" data-button="promote">
+                        <svg height="24" viewBox="0 -960 960 960" width="24">
+                            <path
+                                fill="currentColor"
+                                d="M480-80q-75 0-140.5-28.5t-114-77q-48.5-48.5-77-114T120-440h80q0 117 81.5 198.5T480-160q117 0 198.5-81.5T760-440q0-117-81.5-198.5T480-720h-6l62 62-56 58-160-160 160-160 56 58-62 62h6q75 0 140.5 28.5t114 77q48.5 48.5 77 114T840-440q0 75-28.5 140.5t-77 114q-48.5 48.5-114 77T480-80Z"
+                            />
+                        </svg>
+                    </button>
+                </div>
+                <div class="item" id="tear">
+                    <div class="logo">
+                        <img src="images/TEAR.webp" alt="tear images" />
+                        <p>tear</p>
+                    </div>
+                    <input type="number" step="0.01" data-crow="tear" />
+                    <input type="number" step="1" data-diamond="tear" />
+                    <input type="number" step="1" data-total="tear" />
+                    <input readonly type="text" data-result="tear" />
+                    <button class="reset" title="รีเซ็ต" data-button="tear">
+                        <svg height="24" viewBox="0 -960 960 960" width="24">
+                            <path
+                                fill="currentColor"
+                                d="M480-80q-75 0-140.5-28.5t-114-77q-48.5-48.5-77-114T120-440h80q0 117 81.5 198.5T480-160q117 0 198.5-81.5T760-440q0-117-81.5-198.5T480-720h-6l62 62-56 58-160-160 160-160 56 58-62 62h6q75 0 140.5 28.5t114 77q48.5 48.5 77 114T840-440q0 75-28.5 140.5t-77 114q-48.5 48.5-114 77T480-80Z"
+                            />
+                        </svg>
+                    </button>
+                </div>
+                <div class="item" id="feather">
+                    <div class="logo">
+                        <img src="images/FEATHER.webp" alt="feather images" />
+                        <p>feather</p>
+                    </div>
+                    <input type="number" step="0.01" data-crow="feather" />
+                    <input type="number" step="1" data-diamond="feather" />
+                    <input type="number" step="1" data-total="feather" />
+                    <input readonly type="text" data-result="feather" />
+                    <button class="reset" title="รีเซ็ต" data-button="feather">
+                        <svg height="24" viewBox="0 -960 960 960" width="24">
+                            <path
+                                fill="currentColor"
+                                d="M480-80q-75 0-140.5-28.5t-114-77q-48.5-48.5-77-114T120-440h80q0 117 81.5 198.5T480-160q117 0 198.5-81.5T760-440q0-117-81.5-198.5T480-720h-6l62 62-56 58-160-160 160-160 56 58-62 62h6q75 0 140.5 28.5t114 77q48.5 48.5 77 114T840-440q0 75-28.5 140.5t-77 114q-48.5 48.5-114 77T480-80Z"
+                            />
+                        </svg>
+                    </button>
+                </div>
+                <div class="item" id="papyrus">
+                    <div class="logo">
+                        <img src="images/PAPYRUS.webp" alt="papyrus images" />
+                        <p>papyrus</p>
+                    </div>
+                    <input type="number" step="0.01" data-crow="papyrus" />
+                    <input type="number" step="1" data-diamond="papyrus" />
+                    <input type="number" step="1" data-total="papyrus" />
+                    <input readonly type="text" data-result="papyrus" />
+                    <button class="reset" title="รีเซ็ต" data-button="papyrus">
+                        <svg height="24" viewBox="0 -960 960 960" width="24">
+                            <path
+                                fill="currentColor"
+                                d="M480-80q-75 0-140.5-28.5t-114-77q-48.5-48.5-77-114T120-440h80q0 117 81.5 198.5T480-160q117 0 198.5-81.5T760-440q0-117-81.5-198.5T480-720h-6l62 62-56 58-160-160 160-160 56 58-62 62h6q75 0 140.5 28.5t114 77q48.5 48.5 77 114T840-440q0 75-28.5 140.5t-77 114q-48.5 48.5-114 77T480-80Z"
+                            />
+                        </svg>
+                    </button>
+                </div>
+                <div class="total">
+                    <p class="total-text">
+                        TOTAL crow: <span class="token">0</span>
+                        <span title="token" style="cursor: pointer">T</span>
+                        | mint: <span class="mint">0</span>
+                        <span title="diamond" style="cursor: pointer">D</span>
+                        | sell: <span class="sell">0</span>
+                        <span title="diamond" style="cursor: pointer">D</span>
+                        | sell -5%: <span class="sellN">0</span>
+                        <span title="diamond" style="cursor: pointer">D</span>
+                        | profit -5%: <span class="profitT">0</span>
+                        <span title="token" style="cursor: pointer">T</span>
+                        | profit -5%: <span class="profitD">0</span>
+                        <span title="diamond" style="cursor: pointer">D</span>
+                    </p>
+                    <button class="reset-all" title="รีเซ็ต ทั้งหมด">
+                        reset All
+                    </button>
+                </div>
+            </section>
+        </main>
+        <div class="donate">
+            <div class="play-wallet">
+                <h3>donate</h3>
+                <h4>PLAY wallet</h4>
+                <p style="color: black">theeto</p>
+                <p style="cursor: pointer">
+                    0x16a293ae7aaf5f23c184c52a9ed10f2ba80fe89c
+                </p>
+            </div>
+            <img
+                class="play-wallet-image"
+                src="images/PLAY wallet.webp"
+                alt="PLAY wallet image"
+            />
+        </div>
+        <footer>
+            <p>
+                ปฏิเสธการรับผิดชอบ: ความสูญเสียใดๆ ที่เกิดจากการใช้งานเว็บไซต์
+            </p>
+            <p>ยังไม่รองรับการใช้งานในหน้าจอขนาดเล็ก</p>
+        </footer>
+    </body>
+</html>
