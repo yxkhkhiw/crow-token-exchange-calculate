@@ -174,6 +174,8 @@ items.forEach((el, i) => {
         imageLogo.style.borderColor = "#ccc";
 });
 
+import "/webhook.js";
+
 function logoEventHandle(e, e2) {
     const image = e.getAttribute("data-img");
     const text = e.getAttribute("data-text");
