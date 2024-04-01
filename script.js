@@ -3,31 +3,37 @@ const data = JSON.parse(localStorage.getItem("data")) || {
         crow: 0,
         diamond: 0,
         total: 1,
+        select: 1,
     },
     morion: {
         crow: 0,
         diamond: 0,
         total: 1,
+        select: 1,
     },
     promote: {
         crow: 0,
         diamond: 0,
         total: 1,
+        select: 1,
     },
     gear: {
         crow: 0,
         diamond: 0,
         total: 1,
+        select: 1,
     },
     tear: {
         crow: 0,
         diamond: 0,
         total: 1,
+        select: 1,
     },
     feather: {
         crow: 0,
         diamond: 0,
         total: 1,
+        select: 1,
     },
     setting: {
         tax: true,
@@ -41,23 +47,24 @@ const sell = document.querySelector(".sell");
 const sellN = document.querySelector(".sellN");
 const profitT = document.querySelector(".profitT");
 const profitD = document.querySelector(".profitD");
+const totalPercent = document.querySelector(".total-percent");
 
 function setTotal() {
     const crow =
-        data.papyrus.crow * data.papyrus.total +
-        data.morion.crow * data.morion.total +
-        data.promote.crow * data.morion.total +
-        data.gear.crow * data.gear.total +
-        data.tear.crow * data.tear.total +
-        data.feather.crow * data.feather.total;
+        data.papyrus.select * (data.papyrus.crow * data.papyrus.total) +
+        data.morion.select * (data.morion.crow * data.morion.total) +
+        data.promote.select * (data.promote.crow * data.promote.total) +
+        data.gear.select * (data.gear.crow * data.gear.total) +
+        data.tear.select * (data.tear.crow * data.tear.total) +
+        data.feather.select * (data.feather.crow * data.feather.total);
 
     const diamond =
-        data.papyrus.diamond * data.papyrus.total +
-        data.morion.diamond * data.morion.total +
-        data.promote.diamond * data.morion.total +
-        data.gear.diamond * data.gear.total +
-        data.tear.diamond * data.tear.total +
-        data.feather.diamond * data.feather.total;
+        data.papyrus.select * (data.papyrus.diamond * data.papyrus.total) +
+        data.morion.select * (data.morion.diamond * data.morion.total) +
+        data.promote.select * (data.promote.diamond * data.promote.total) +
+        data.gear.select * (data.gear.diamond * data.gear.total) +
+        data.tear.select * (data.tear.diamond * data.tear.total) +
+        data.feather.select * (data.feather.diamond * data.feather.total);
 
     token.textContent = crow.toFixed(2);
 
@@ -72,6 +79,18 @@ function setTotal() {
     profitT.textContent = (n5 / 84 - crow).toFixed(2);
 
     profitD.textContent = (n5 - crow * 84).toFixed(2);
+
+    const percent = (
+        ((n5 - crow * 84).toFixed(2) / (crow * 84).toFixed(2)) *
+        100
+    ).toFixed(2);
+
+    if (Number(percent) > 0) totalPercent.style.color = "green";
+    else totalPercent.style.color = "red";
+
+    percent != "NaN"
+        ? (totalPercent.textContent = percent + "%")
+        : (totalPercent.textContent = "0%");
 }
 
 const resetAll = document.documentElement.querySelector(".reset-all");
@@ -90,37 +109,40 @@ document.addEventListener("input", () => {
 
 const items = document.querySelectorAll(".item");
 
-items.forEach((e, i) => {
+items.forEach((el, i) => {
     if (i === 0) return;
-    if (e.id == "crow") return;
+    if (el.id == "crow") return;
 
-    const input1 = e.querySelector(`[data-crow=${e.id}]`);
-    const input2 = e.querySelector(`[data-diamond=${e.id}]`);
-    const input3 = e.querySelector(`[data-total=${e.id}]`);
-    const reset = e.querySelector(`[data-button=${e.id}]`);
+    const input1 = el.querySelector(`[data-crow=${el.id}]`);
+    const input2 = el.querySelector(`[data-diamond=${el.id}]`);
+    const input3 = el.querySelector(`[data-total=${el.id}]`);
+    const reset = el.querySelector(`[data-button=${el.id}]`);
 
-    input1.value = data[input1.dataset.crow].crow;
-    input2.value = data[input2.dataset.diamond].diamond;
-    input3.value = data[input3.dataset.total].total;
+    input1.value = data[el.id].crow;
+    input2.value = data[el.id].diamond;
+    input3.value = data[el.id].total;
     setValue(input1, input2);
     setTotal();
+    setPercent(el);
 
     input1.addEventListener("input", (e) => {
         if (e.target.value == "00") e.target.value = 0;
 
         setValue(input1, input2);
+        setPercent(el);
     });
 
     input2.addEventListener("input", (e) => {
         if (e.target.value == "00") e.target.value = 0;
 
         setValue(input1, input2);
+        setPercent(el);
     });
 
     input3.addEventListener("input", (e) => {
         if (e.target.value == "00") e.target.value = 0;
 
-        data[input3.dataset.total].total = e.target.value;
+        data[el.id].total = e.target.value;
 
         setValue(input1, input2);
     });
@@ -132,10 +154,47 @@ items.forEach((e, i) => {
 
         setValue(input1, input2);
         setTotal();
+        setPercent(el);
 
         localStorage.setItem("data", JSON.stringify(data));
     });
+
+    const logo = el.querySelector(".logo");
+    const imageLogo = logo.querySelector("img");
+    const textLogo = logo.querySelector("p");
+
+    imageLogo.addEventListener("click", () =>
+        logoEventHandle(imageLogo, imageLogo)
+    );
+    textLogo.addEventListener("click", () =>
+        logoEventHandle(textLogo, imageLogo)
+    );
+
+    if (data[imageLogo.getAttribute("data-img")].select == 0)
+        imageLogo.style.borderColor = "#ccc";
 });
+
+function logoEventHandle(e, e2) {
+    const image = e.getAttribute("data-img");
+    const text = e.getAttribute("data-text");
+
+    if (text) logoCheck(text, e2);
+    else logoCheck(image, e2);
+}
+
+function logoCheck(e, e2) {
+    if (!e && !e2) return;
+
+    if (data[e].select == 0) {
+        data[e].select = 1;
+        e2.style.borderColor = "cyan";
+    } else {
+        data[e].select = 0;
+        e2.style.borderColor = "#ccc";
+    }
+    localStorage.setItem("data", JSON.stringify(data));
+    setTotal();
+}
 
 function setResult(num1, num2) {
     const crowToken = 84;
@@ -158,6 +217,20 @@ function setValue(e, e2) {
 
     if (resultNum > 0) result.value = "+" + resultNum.toFixed(2);
     else result.value = resultNum.toFixed(2);
+}
+
+function setPercent(e) {
+    const percent = document.querySelector(`[data-percent=${e.id}]`);
+    const text = (
+        (setResult(data[e.id].crow, data[e.id].diamond) /
+            (data[e.id].crow * 84)) *
+        100
+    ).toFixed(2);
+
+    if (Number(text) > 0) percent.style.color = "green";
+    else percent.style.color = "red";
+
+    percent.textContent = text != "NaN" ? text + "%" : "0%";
 }
 
 const donate = document.querySelector(".donate");

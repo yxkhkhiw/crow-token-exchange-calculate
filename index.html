@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Crows</title>
+        <title>Crow token exchange calculate</title>
 
         <meta
             name="google-site-verification"
@@ -12,7 +12,7 @@
 
         <meta
             name="description"
-            content="เว็ปคำนวณเหรียญ CROW เทียบราคาขายในเกมส์"
+            content="เว็บคำนวณเหรียญ CROW เทียบขายเป็นเพชรในเกมส์"
         />
         <meta name="keywords" content="Night Crow, crow token, exchange" />
 
@@ -43,31 +43,51 @@
         <main>
             <section>
                 <div class="item">
-                    <p>item</p>
+                    <div class="info-card">
+                        <p>item</p>
+                        <div class="info">
+                            <p>i</p>
+                            <div class="p5">
+                                click to remove or add from total
+                            </div>
+                        </div>
+                    </div>
                     <p>crow</p>
                     <p>diamond</p>
                     <p>amount</p>
-                    <p>profit</p>
-                    <button class="setting" title="ลบ 5% แล้ว">
-                        <svg height="24" viewBox="0 -960 960 960" width="24">
-                            <path
-                                fill="currentColor"
-                                d="M480-120q-33 0-56.5-23.5T400-200q0-33 23.5-56.5T480-280q33 0 56.5 23.5T560-200q0 33-23.5 56.5T480-120Zm-80-240v-480h160v480H400Z"
-                            />
-                        </svg>
-                    </button>
+                    <div class="info-card">
+                        <p>profit</p>
+                        <div class="info">
+                            <p>i</p>
+                            <div class="p5">-5%</div>
+                        </div>
+                    </div>
+                    <p>percent</p>
                 </div>
 
                 <div class="item" id="morion">
                     <div class="logo">
-                        <img src="images/MORION.webp" alt="morion images" />
-                        <p>morion</p>
+                        <img
+                            src="images/MORION.webp"
+                            alt="morion images"
+                            data-img="morion"
+                        />
+                        <p data-text="morion">morion</p>
                     </div>
                     <input type="number" step="0.01" data-crow="morion" />
                     <input type="number" step="1" data-diamond="morion" />
                     <input type="number" step="1" data-total="morion" />
                     <input readonly type="text" data-result="morion" />
-                    <button class="reset" title="รีเซ็ต" data-button="morion">
+                    <div class="percent-container">
+                        <p class="percent" data-percent="morion">0%</p>
+                        <svg height="24" viewBox="0 -960 960 960" width="24">
+                            <path
+                                fill="currentColor"
+                                d="m136-240-56-56 296-298 160 160 208-206H640v-80h240v240h-80v-104L536-320 376-480 136-240Z"
+                            />
+                        </svg>
+                    </div>
+                    <button class="reset" title="Reset" data-button="morion">
                         <svg height="24" viewBox="0 -960 960 960" width="24">
                             <path
                                 fill="currentColor"
@@ -78,14 +98,27 @@
                 </div>
                 <div class="item" id="gear">
                     <div class="logo">
-                        <img src="images/GEAR.webp" alt="gear images" />
-                        <p>gear</p>
+                        <img
+                            src="images/GEAR.webp"
+                            alt="gear images"
+                            data-img="gear"
+                        />
+                        <p data-text="gear">gear</p>
                     </div>
                     <input type="number" step="0.01" data-crow="gear" />
                     <input type="number" step="1" data-diamond="gear" />
                     <input type="number" step="1" data-total="gear" />
                     <input readonly type="text" data-result="gear" />
-                    <button class="reset" title="รีเซ็ต" data-button="gear">
+                    <div class="percent-container">
+                        <p class="percent" data-percent="gear">0%</p>
+                        <svg height="24" viewBox="0 -960 960 960" width="24">
+                            <path
+                                fill="currentColor"
+                                d="m136-240-56-56 296-298 160 160 208-206H640v-80h240v240h-80v-104L536-320 376-480 136-240Z"
+                            />
+                        </svg>
+                    </div>
+                    <button class="reset" title="Reset" data-button="gear">
                         <svg height="24" viewBox="0 -960 960 960" width="24">
                             <path
                                 fill="currentColor"
@@ -96,14 +129,27 @@
                 </div>
                 <div class="item" id="promote">
                     <div class="logo">
-                        <img src="images/PROMOTE.webp" alt="promote images" />
-                        <p>promote</p>
+                        <img
+                            src="images/PROMOTE.webp"
+                            alt="promote images"
+                            data-img="promote"
+                        />
+                        <p data-text="promote">promote</p>
                     </div>
                     <input type="number" step="0.01" data-crow="promote" />
                     <input type="number" step="1" data-diamond="promote" />
                     <input type="number" step="1" data-total="promote" />
                     <input readonly type="text" data-result="promote" />
-                    <button class="reset" title="รีเซ็ต" data-button="promote">
+                    <div class="percent-container">
+                        <p class="percent" data-percent="promote">0%</p>
+                        <svg height="24" viewBox="0 -960 960 960" width="24">
+                            <path
+                                fill="currentColor"
+                                d="m136-240-56-56 296-298 160 160 208-206H640v-80h240v240h-80v-104L536-320 376-480 136-240Z"
+                            />
+                        </svg>
+                    </div>
+                    <button class="reset" title="Reset" data-button="promote">
                         <svg height="24" viewBox="0 -960 960 960" width="24">
                             <path
                                 fill="currentColor"
@@ -114,14 +160,27 @@
                 </div>
                 <div class="item" id="tear">
                     <div class="logo">
-                        <img src="images/TEAR.webp" alt="tear images" />
-                        <p>tear</p>
+                        <img
+                            src="images/TEAR.webp"
+                            alt="tear images"
+                            data-img="tear"
+                        />
+                        <p data-text="tear">tear</p>
                     </div>
                     <input type="number" step="0.01" data-crow="tear" />
                     <input type="number" step="1" data-diamond="tear" />
                     <input type="number" step="1" data-total="tear" />
                     <input readonly type="text" data-result="tear" />
-                    <button class="reset" title="รีเซ็ต" data-button="tear">
+                    <div class="percent-container">
+                        <p class="percent" data-percent="tear">0%</p>
+                        <svg height="24" viewBox="0 -960 960 960" width="24">
+                            <path
+                                fill="currentColor"
+                                d="m136-240-56-56 296-298 160 160 208-206H640v-80h240v240h-80v-104L536-320 376-480 136-240Z"
+                            />
+                        </svg>
+                    </div>
+                    <button class="reset" title="Reset" data-button="tear">
                         <svg height="24" viewBox="0 -960 960 960" width="24">
                             <path
                                 fill="currentColor"
@@ -132,14 +191,27 @@
                 </div>
                 <div class="item" id="feather">
                     <div class="logo">
-                        <img src="images/FEATHER.webp" alt="feather images" />
-                        <p>feather</p>
+                        <img
+                            src="images/FEATHER.webp"
+                            alt="feather images"
+                            data-img="feather"
+                        />
+                        <p data-text="feather">feather</p>
                     </div>
                     <input type="number" step="0.01" data-crow="feather" />
                     <input type="number" step="1" data-diamond="feather" />
                     <input type="number" step="1" data-total="feather" />
                     <input readonly type="text" data-result="feather" />
-                    <button class="reset" title="รีเซ็ต" data-button="feather">
+                    <div class="percent-container">
+                        <p class="percent" data-percent="feather">0%</p>
+                        <svg height="24" viewBox="0 -960 960 960" width="24">
+                            <path
+                                fill="currentColor"
+                                d="m136-240-56-56 296-298 160 160 208-206H640v-80h240v240h-80v-104L536-320 376-480 136-240Z"
+                            />
+                        </svg>
+                    </div>
+                    <button class="reset" title="Reset" data-button="feather">
                         <svg height="24" viewBox="0 -960 960 960" width="24">
                             <path
                                 fill="currentColor"
@@ -150,14 +222,27 @@
                 </div>
                 <div class="item" id="papyrus">
                     <div class="logo">
-                        <img src="images/PAPYRUS.webp" alt="papyrus images" />
-                        <p>papyrus</p>
+                        <img
+                            src="images/PAPYRUS.webp"
+                            alt="papyrus images"
+                            data-img="papyrus"
+                        />
+                        <p data-text="papyrus">papyrus</p>
                     </div>
                     <input type="number" step="0.01" data-crow="papyrus" />
                     <input type="number" step="1" data-diamond="papyrus" />
                     <input type="number" step="1" data-total="papyrus" />
                     <input readonly type="text" data-result="papyrus" />
-                    <button class="reset" title="รีเซ็ต" data-button="papyrus">
+                    <div class="percent-container">
+                        <p class="percent" data-percent="papyrus">0%</p>
+                        <svg height="24" viewBox="0 -960 960 960" width="24">
+                            <path
+                                fill="currentColor"
+                                d="m136-240-56-56 296-298 160 160 208-206H640v-80h240v240h-80v-104L536-320 376-480 136-240Z"
+                            />
+                        </svg>
+                    </div>
+                    <button class="reset" title="Reset" data-button="papyrus">
                         <svg height="24" viewBox="0 -960 960 960" width="24">
                             <path
                                 fill="currentColor"
@@ -180,10 +265,9 @@
                         <span title="token" style="cursor: pointer">T</span>
                         | profit -5%: <span class="profitD">0</span>
                         <span title="diamond" style="cursor: pointer">D</span>
+                        | <span class="total-percent">0%</span>
                     </p>
-                    <button class="reset-all" title="รีเซ็ต ทั้งหมด">
-                        reset All
-                    </button>
+                    <button class="reset-all" title="Clear">Clear</button>
                 </div>
             </section>
         </main>
