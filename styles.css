@@ -96,11 +96,8 @@ svg {
     gap: 0.5rem;
 }
 
-.list {
-    place-items: start;
-}
-
-.list * {
+.list div:first-child {
+    justify-self: start;
 }
 
 .logo {
