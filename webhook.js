@@ -25,7 +25,6 @@ export default function hoook() {
                         response.statusText
                 );
             }
-            console.log("Webhook sent successfully!");
         })
         .catch((error) => {
             console.error("Error sending webhook:", error);

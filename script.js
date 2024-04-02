@@ -80,16 +80,21 @@ function setTotal() {
 
     profitD.textContent = (n5 - crow * 84).toFixed(2);
 
-    const percent = (
+    let percent = (
         ((n5 - crow * 84).toFixed(2) / (crow * 84).toFixed(2)) *
         100
     ).toFixed(2);
 
-    if (Number(percent) > 0) totalPercent.style.color = "green";
-    else totalPercent.style.color = "red";
+    if (Number(percent) > 0) {
+        percent = "+" + percent + "%";
+        totalPercent.style.color = "green";
+    } else {
+        totalPercent.style.color = "red";
+        percent = percent + "%";
+    }
 
-    percent != "NaN"
-        ? (totalPercent.textContent = percent + "%")
+    percent != "NaN%"
+        ? (totalPercent.textContent = percent)
         : (totalPercent.textContent = "0%");
 }
 
@@ -118,8 +123,14 @@ items.forEach((el, i) => {
     const input3 = el.querySelector(`[data-total=${el.id}]`);
     const reset = el.querySelector(`[data-button=${el.id}]`);
 
-    input1.value = data[el.id].crow;
-    input2.value = data[el.id].diamond;
+    data[el.id].crow == 0
+        ? (input1.value = "")
+        : (input1.value = data[el.id].crow);
+
+    data[el.id].diamond == 0
+        ? (input2.value = "")
+        : (input2.value = data[el.id].diamond);
+
     input3.value = data[el.id].total;
     setValue(input1, input2);
     setTotal();
@@ -217,22 +228,31 @@ function setValue(e, e2) {
         setResult(data[e.dataset.crow].crow, data[e2.dataset.diamond].diamond) *
         data[e.dataset.crow].total;
 
+    if (resultNum == 0) return (result.value = "");
+
     if (resultNum > 0) result.value = "+" + resultNum.toFixed(2);
     else result.value = resultNum.toFixed(2);
 }
 
 function setPercent(e) {
     const percent = document.querySelector(`[data-percent=${e.id}]`);
-    const text = (
+    let text = (
         (setResult(data[e.id].crow, data[e.id].diamond) /
             (data[e.id].crow * 84)) *
         100
     ).toFixed(2);
 
-    if (Number(text) > 0) percent.style.color = "green";
-    else percent.style.color = "red";
+    if (Number(text) > 0) {
+        text = "+" + text + "%";
+        percent.style.color = "green";
+    } else {
+        percent.style.color = "red";
+        text = text + "%";
+    }
 
-    percent.textContent = text != "NaN" ? text + "%" : "0%";
+    text != "NaN%"
+        ? (percent.textContent = text)
+        : (percent.textContent = "0%");
 }
 
 const donate = document.querySelector(".donate");
