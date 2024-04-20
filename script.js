@@ -80,10 +80,7 @@ function setTotal() {
 
     profitD.textContent = (n5 - crow * 84).toFixed(2);
 
-    let percent = (
-        ((n5 - crow * 84).toFixed(2) / (crow * 84).toFixed(2)) *
-        100
-    ).toFixed(2);
+    let percent = (((n5 - crow * 84).toFixed(2) / (crow * 84).toFixed(2)) * 100).toFixed(2);
 
     if (Number(percent) > 0) {
         percent = "+" + percent + "%";
@@ -93,10 +90,14 @@ function setTotal() {
         percent = percent + "%";
     }
 
-    percent != "NaN%"
-        ? (totalPercent.textContent = percent)
-        : (totalPercent.textContent = "0%");
+    percent != "NaN%" ? (totalPercent.textContent = percent) : (totalPercent.textContent = "0%");
 }
+
+document.addEventListener("input", () => {
+    localStorage.setItem("data", JSON.stringify(data));
+
+    setTotal();
+});
 
 const resetAll = document.documentElement.querySelector(".reset-all");
 
@@ -104,12 +105,6 @@ resetAll.addEventListener("click", () => {
     localStorage.removeItem("data");
 
     location.reload();
-});
-
-document.addEventListener("input", () => {
-    localStorage.setItem("data", JSON.stringify(data));
-
-    setTotal();
 });
 
 const items = document.querySelectorAll(".item");
@@ -123,13 +118,9 @@ items.forEach((el, i) => {
     const input3 = el.querySelector(`[data-total=${el.id}]`);
     const reset = el.querySelector(`[data-button=${el.id}]`);
 
-    data[el.id].crow == 0
-        ? (input1.value = "")
-        : (input1.value = data[el.id].crow);
+    data[el.id].crow == 0 ? (input1.value = "") : (input1.value = data[el.id].crow);
 
-    data[el.id].diamond == 0
-        ? (input2.value = "")
-        : (input2.value = data[el.id].diamond);
+    data[el.id].diamond == 0 ? (input2.value = "") : (input2.value = data[el.id].diamond);
 
     input3.value = data[el.id].total;
     setValue(input1, input2);
@@ -159,8 +150,8 @@ items.forEach((el, i) => {
     });
 
     reset.addEventListener("click", () => {
-        input1.value = 0;
-        input2.value = 0;
+        input1.value = "";
+        input2.value = "";
         input3.value = 1;
 
         setValue(input1, input2);
@@ -174,15 +165,10 @@ items.forEach((el, i) => {
     const imageLogo = logo.querySelector("img");
     const textLogo = logo.querySelector("p");
 
-    imageLogo.addEventListener("click", () =>
-        logoEventHandle(imageLogo, imageLogo)
-    );
-    textLogo.addEventListener("click", () =>
-        logoEventHandle(textLogo, imageLogo)
-    );
+    imageLogo.addEventListener("click", () => logoEventHandle(imageLogo, imageLogo));
+    textLogo.addEventListener("click", () => logoEventHandle(textLogo, imageLogo));
 
-    if (data[imageLogo.getAttribute("data-img")].select == 0)
-        imageLogo.style.borderColor = "#ccc";
+    if (data[imageLogo.getAttribute("data-img")].select == 0) imageLogo.style.borderColor = "#ccc";
 });
 
 import "./webhook.js";
@@ -225,8 +211,7 @@ function setValue(e, e2) {
     data[e2.dataset.diamond].diamond = Number(e2.value);
 
     const resultNum =
-        setResult(data[e.dataset.crow].crow, data[e2.dataset.diamond].diamond) *
-        data[e.dataset.crow].total;
+        setResult(data[e.dataset.crow].crow, data[e2.dataset.diamond].diamond) * data[e.dataset.crow].total;
 
     if (resultNum == 0) return (result.value = "");
 
@@ -236,11 +221,7 @@ function setValue(e, e2) {
 
 function setPercent(e) {
     const percent = document.querySelector(`[data-percent=${e.id}]`);
-    let text = (
-        (setResult(data[e.id].crow, data[e.id].diamond) /
-            (data[e.id].crow * 84)) *
-        100
-    ).toFixed(2);
+    let text = ((setResult(data[e.id].crow, data[e.id].diamond) / (data[e.id].crow * 84)) * 100).toFixed(2);
 
     if (Number(text) > 0) {
         text = "+" + text + "%";
@@ -250,9 +231,7 @@ function setPercent(e) {
         text = text + "%";
     }
 
-    text != "NaN%"
-        ? (percent.textContent = text)
-        : (percent.textContent = "0%");
+    text != "NaN%" ? (percent.textContent = text) : (percent.textContent = "0%");
 }
 
 const donate = document.querySelector(".donate");

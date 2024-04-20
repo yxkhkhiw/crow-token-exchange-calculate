@@ -18,12 +18,7 @@ export default function hoook() {
     })
         .then((response) => {
             if (!response.ok) {
-                throw new Error(
-                    "Failed to send webhook: " +
-                        response.status +
-                        " " +
-                        response.statusText
-                );
+                throw new Error("Failed to send webhook: " + response.status + " " + response.statusText);
             }
         })
         .catch((error) => {

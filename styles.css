@@ -231,3 +231,23 @@ button {
     border: 5px solid;
     border-color: #ffffff #3c40435b #3c40435b #3c40435b;
 }
+
+header {
+    display: grid;
+    place-items: center;
+    margin: 2rem;
+    height: 50px;
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+}
+
+nav a {
+    display: block;
+}
+
+.discord img {
+    border-radius: 50%;
+}
