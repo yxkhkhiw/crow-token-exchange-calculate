@@ -51,6 +51,9 @@ resetAll.addEventListener("click", () => {
     location.reload();
 });
 
+import hook from "./webhook.js";
+hook("earn");
+
 const token = document.querySelector(".token");
 const mint = document.querySelector(".mint");
 const totalPercent = document.querySelector(".total-percent");

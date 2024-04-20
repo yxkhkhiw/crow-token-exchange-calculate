@@ -1,12 +1,12 @@
 const webhookURL =
     "https://discord.com/api/webhooks/1183340522669092875/_OHzZCE12MG3yhtZgpN_QdBfmjvjVQrsIoWaao14J75LgH5SlINSpr_yIscEkr1J4ApQ";
 
-export default function hoook() {
+export default function hoook(url) {
     const timestamp = Math.floor(Date.now() / 1000);
     const discordTimestamp = `<t:${timestamp}>`;
 
     const payload = {
-        content: "website has been accessed: " + discordTimestamp,
+        content: url + " has been accessed: " + discordTimestamp,
     };
 
     fetch(webhookURL, {
@@ -25,5 +25,3 @@ export default function hoook() {
             console.error("Error sending webhook:", error);
         });
 }
-
-hoook();
