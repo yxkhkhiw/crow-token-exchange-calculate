@@ -79,23 +79,9 @@ function setTotal() {
 
     mint.textContent = diamond.toFixed(2);
 
-    let text = diamond / crow;
+    const resultNum = diamond / crow;
 
-    if (text <= 84) {
-        text = (((84 - text) / 84) * 100).toFixed(1);
-    } else {
-        text = (((84 - text) / text) * 100).toFixed(1);
-    }
-
-    if (text > 0) {
-        text = "+" + text + "%";
-        totalPercent.style.color = "green";
-    } else {
-        totalPercent.style.color = "red";
-        text = text + "%";
-    }
-
-    text != "NaN%" ? (totalPercent.textContent = text) : (totalPercent.textContent = "0%");
+    calper(totalPercent, resultNum);
 }
 
 const donate = document.querySelector(".donate");
@@ -200,24 +186,24 @@ function setPercent(e) {
     const percent = document.querySelector(`[data-percent=${e.id}]`);
 
     const resultNum = setResult(data[e.id].crow, data[e.id].diamond, data[e.id].fee);
+    calper(percent, resultNum);
+}
 
+function calper(e, num) {
     let text = 0;
 
-    if (resultNum <= 84) {
-        text = (((84 - resultNum) / 84) * 100).toFixed(1);
+    if (num > 84) text = (((num - 84) / 84) * 100).toFixed(1);
+    else text = (((84 - num) / 84) * 100).toFixed(1);
+
+    if (num > 84) {
+        text = `+${text}%`;
+        e.style.color = "red";
     } else {
-        text = (((84 - resultNum) / resultNum) * 100).toFixed(1);
+        text = `-${text}%`;
+        e.style.color = "green";
     }
 
-    if (Number(text) > 0) {
-        text = "+" + text + "%";
-        percent.style.color = "green";
-    } else {
-        percent.style.color = "red";
-        text = text + "%";
-    }
-
-    text != "NaN%" ? (percent.textContent = text) : (percent.textContent = "0%");
+    text == "-NaN%" || text == "+NaN%" || text == "-0.0%" ? (e.textContent = "0%") : (e.textContent = text);
 }
 
 //

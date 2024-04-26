@@ -66,21 +66,21 @@ function setTotal() {
         data.tear.select * (data.tear.diamond * data.tear.total) +
         data.feather.select * (data.feather.diamond * data.feather.total);
 
-    token.textContent = crow.toFixed(2);
+    token.textContent = crow.toFixed(1);
 
-    mint.textContent = (crow * 84).toFixed(2);
+    mint.textContent = (crow * 84).toFixed(1);
 
-    sell.textContent = diamond.toFixed(2);
+    sell.textContent = diamond.toFixed(1);
 
     const n5 = diamond - (diamond * 5) / 100;
 
-    sellN.textContent = n5.toFixed(2);
+    sellN.textContent = n5.toFixed(1);
 
-    profitT.textContent = (n5 / 84 - crow).toFixed(2);
+    profitT.textContent = (n5 / 84 - crow).toFixed(1);
 
-    profitD.textContent = (n5 - crow * 84).toFixed(2);
+    profitD.textContent = (n5 - crow * 84).toFixed(1);
 
-    let percent = (((n5 - crow * 84).toFixed(2) / (crow * 84).toFixed(2)) * 100).toFixed(2);
+    let percent = (((n5 - crow * 84).toFixed(1) / (crow * 84).toFixed(1)) * 100).toFixed(1);
 
     if (Number(percent) > 0) {
         percent = "+" + percent + "%";
@@ -202,7 +202,7 @@ function setResult(num1, num2) {
     const tax = num2 - percent;
     const result = tax - num1 * crowToken;
 
-    return result.toFixed(2);
+    return result.toFixed(1);
 }
 
 function setValue(e, e2) {
@@ -216,13 +216,13 @@ function setValue(e, e2) {
 
     if (resultNum == 0) return (result.value = "");
 
-    if (resultNum > 0) result.value = "+" + resultNum.toFixed(2);
-    else result.value = resultNum.toFixed(2);
+    if (resultNum > 0) result.value = "+" + resultNum.toFixed(1);
+    else result.value = resultNum.toFixed(1);
 }
 
 function setPercent(e) {
     const percent = document.querySelector(`[data-percent=${e.id}]`);
-    let text = ((setResult(data[e.id].crow, data[e.id].diamond) / (data[e.id].crow * 84)) * 100).toFixed(2);
+    let text = ((setResult(data[e.id].crow, data[e.id].diamond) / (data[e.id].crow * 84)) * 100).toFixed(1);
 
     if (Number(text) > 0) {
         text = "+" + text + "%";
